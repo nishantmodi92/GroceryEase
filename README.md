@@ -4,79 +4,72 @@
 ![Offline](https://img.shields.io/badge/Offline_Cart-Supported-lightblue)
 ![Cart Abandonment](https://img.shields.io/badge/Abandonment_Rate-35%25_Reduction-success)
 
-> GroceryEase is a next-gen grocery delivery app that combines smart cart management, offline-first capabilities, real-time delivery tracking, and a seamless checkout experience to elevate everyday grocery shopping.
+> GroceryEase is a next-gen, offline-first grocery delivery app that delivers a seamless shopping experience with real-time order tracking, smart cart management, secure payments, and personalized recommendations.
 
 ---
 
-## 🛍️ Key Features
+🌟 Key Highlights
 
-📦 Real-Time Order Tracking: Live map tracking of deliveries with ETA updates.
+📦 Real-Time Delivery Tracking – Live maps with ETA updates using Google Maps API + Location Services.
 
-📲 Smart Cart: Offline-first cart sync across multiple devices.
+🛒 Smart Offline Cart – Persisted across devices, auto-syncs with Firebase Firestore.
 
-💳 Secure Checkout: Stripe, UPI, and wallet integrations for fast payments.
+💳 Fast & Secure Checkout – Stripe, UPI, Wallet integrations with instant payment confirmation.
 
-🔔 Push Notifications: Real-time updates for order status, offers, and promotions.
+🔔 Push Notifications – Real-time updates, promotions, and reminders via FCM.
 
-🌗 Dark Mode Support: Adaptive UI for day/night preference.
+🌗 Dark/Light Mode – Material You 3 adaptive UI with smooth animations.
 
-🛠️ Multi-Device Sync: Persistent cart & order history across devices.
+🛡️ Secure Authentication – Firebase Auth with Email & Google Sign-In.
 
-🛡️ User Authentication & Security: Firebase Auth + email verification.
+🔄 Multi-Device Sync – Cart and order history synced across devices without data loss.
 
-🧹 Optimized Performance: Lazy-loading product lists, image caching, offline resilience.
+🤖 Personalized Recommendations – AI-based suggestions boost engagement.
+
+⚡ Performance Optimized – Lazy-loaded product lists, image caching, offline resilience.
 
 ---
 
 ## ⚙️ Tech Stack
 
-Language & UI: Kotlin + Jetpack Compose (Material You, Animations, Gesture Handling)
-
-Architecture & DI: MVVM + Clean Architecture + Dagger-Hilt
-
-Backend & Database: Firebase (Auth, Firestore, FCM) + Room
-
+Language & UI: Kotlin + Jetpack Compose + Material 3 + Animations
+Architecture: MVVM + Clean Architecture + Repository Pattern + Modular Features
+Backend & Database: Firebase (Auth, Firestore, FCM) + Room (Offline caching)
 Networking: Retrofit + OkHttp + Gson
-
 Maps & Location: Google Maps API + Location Services
-
 Payment Integration: Stripe SDK, UPI Intent
-
-Third-Party Libraries: Coil (image loading), Lottie (animations), Timber (logging), Chucker (network debugging)
-
+Third-Party Libraries: Coil (images), Lottie (animations), Timber (logging), Chucker (network debugging)
 Testing: JUnit, Espresso, Mockk
 
 ---
 
 ## 🏗️ Architecture Overview
 
-UI Layer (Jetpack Compose)
-      │
-ViewModel Layer (MVVM + LiveData/StateFlow)
-      │
-Domain Layer (UseCases / Business Logic)
-      │
-Data Layer
-  ├─ Remote (Firebase Firestore, REST APIs)
-  └─ Local (Room, SharedPreferences)
-      │
-Dependency Injection (Dagger-Hilt)
+flowchart TD
+    UI[Jetpack Compose UI] --> VM[ViewModel (LiveData/StateFlow)]
+    VM --> UC[UseCases / Business Logic]
+    UC --> REPO[Repository Layer]
+    REPO --> DB[Room Local Storage]
+    REPO --> FIREBASE[Firestore / Auth / FCM]
+    REPO --> PAYMENT[Stripe / UPI]
+	
+✅ Offline-First Design: Cart & orders cached locally, synced in real-time
+✅ Reactive UI Updates: LiveData/StateFlow ensures instant feedback
+✅ Modular & Scalable: Easy to add new features & integrations
 
-Offline-First Design: Cart & orders cached locally (Room), synced with Firebase Firestore.
-Reactive UI Updates: LiveData/StateFlow ensures instant UI feedback.
-Scalable & Modular: Clean Architecture allows easy addition of new features.
 
-## 📊 Metrics & Impact
 
-📉 35% reduction in cart abandonment via offline sync & reminders.
+📊 Metrics & Impact
 
-🚀 +20% increase in session engagement through personalized product recommendations.
+📉 35% reduction in cart abandonment via offline sync & reminders
 
-🧪 99% crash-free sessions across multiple devices.
+🚀 +20% session engagement with AI-based recommendations
 
-💡 Average checkout time reduced by 40% due to smart cart & fast payment integrations.
+🧪 99% crash-free sessions across devices
 
-🔄 Real-time cart consistency across devices: Zero cart drop-offs.
+💡 40% faster checkout with smart cart & quick payment integration
+
+🔄 Zero cart drop-offs – reliable multi-device shopping experience
 
 ## 🛠️ Setup Guide
 1️⃣ Clone Repository
@@ -87,9 +80,8 @@ cd GroceryEase
 
 Create a Firebase project at Firebase Console
 Enable Authentication (Email/Password, Google Sign-In).
-
+Add google-services.json to /app
 Enable Firestore (Realtime database) and configure security rules.
-
 Enable FCM for push notifications.
 
 Download google-services.json and place it in app/.
@@ -97,9 +89,7 @@ Download google-services.json and place it in app/.
 3️⃣ Android Studio Setup
 
 Open project in Android Studio Flamingo+
-
 Ensure Kotlin 1.9+, Compose 1.5+, Gradle 8.0+
-
 Sync Gradle and build project.
 
 
@@ -113,7 +103,10 @@ Run on emulator or physical device with location permissions enabled.
 Test offline cart sync by toggling network connectivity.
 
 ## Links
-	🔗 GitHub: https://github.com/nishantmodi92/GroceryEase
+	
+	GitHub: GroceryEase
+
+Portfolio Demo: nishantmodi92.github.io
 
 
 
